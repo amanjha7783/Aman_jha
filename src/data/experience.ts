@@ -1,0 +1,40 @@
+export const experiences = [
+  {
+    id: "cris",
+    role: "Machine Learning Intern",
+    org: "Centre for Railway Information Systems (CRIS)",
+    sub: "Ministry of Railways, Govt. of India",
+    period: "May 2026 – Jun 2026",
+    context: "SFOORTI — Smart Freight Operation Optimisation & Real Time Information",
+    points: [
+      "Built an end-to-end machine learning pipeline for freight rake turnaround-time prediction: exploratory data analysis, data preparation, feature engineering, model training, evaluation and model selection.",
+      "Analysed 1,427 operational records and benchmarked multiple algorithms.",
+      "Selected LightGBM as the best-performing model in the evaluated experiments and used SHAP to explain predictions.",
+      "Found station-level historical turnaround averages to be the strongest predictor.",
+    ],
+    tech: ["Python", "Pandas", "Scikit-learn", "LightGBM", "SHAP"],
+    workflow: [
+      { step: "Data Understanding", text: "Studied the structure of 1,427 operational freight records and the turnaround-time target." },
+      { step: "Data Cleaning", text: "Validated and prepared the records for modelling." },
+      { step: "Feature Engineering", text: "Derived features such as station-level historical turnaround averages." },
+      { step: "Model Training", text: "Trained and benchmarked several algorithms." },
+      { step: "Evaluation", text: "Compared candidates under the same evaluation setup; LightGBM performed best." },
+      { step: "Explainability", text: "Applied SHAP to see which features drive each prediction." },
+      { step: "Prediction", text: "Produced turnaround-time predictions from the selected model." },
+    ],
+  },
+  {
+    id: "drm",
+    role: "Intern",
+    org: "Divisional Railway Manager's Office (DRM), Delhi",
+    sub: "Indian Railways",
+    period: "May 2025 – Jun 2025",
+    context: "Passenger information systems",
+    points: [
+      "Worked on railway display board and public announcement systems.",
+      "Contributed to automation intended to improve real-time passenger information delivery.",
+    ],
+    tech: [],
+    workflow: [],
+  },
+];
