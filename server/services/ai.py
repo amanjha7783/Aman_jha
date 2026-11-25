@@ -18,7 +18,7 @@ import re
 import uuid
 from typing import Any, Iterator
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
@@ -164,8 +164,8 @@ def history(
         return _rows(conn, user["id"], cid, limit)
 
 
-@router.delete("/chat/history", status_code=204)
-def clear_history(conversation_id: str = "default", user: dict = Depends(current_user)) -> None:
+@router.delete("/chat/history", status_code=204, response_class=Response)
+def clear_history(conversation_id: str = "default", user: dict = Depends(current_user)) -> Response:
     cid = _conv(conversation_id)
     with db() as conn:
         rows = conn.execute(
@@ -176,6 +176,7 @@ def clear_history(conversation_id: str = "default", user: dict = Depends(current
             conn.execute(
                 "DELETE FROM docs WHERE owner = ? AND col = ? AND id = ?", (user["id"], COLLECTION, doc_id),
             )
+    return Response(status_code=204)
 
 
 @router.post("/chat/check")

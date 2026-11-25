@@ -27,7 +27,7 @@ import re
 import uuid
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel
 
 from auth import current_user
@@ -179,8 +179,8 @@ def download_url(doc_id: str, user: dict = Depends(current_user)) -> dict[str, A
     return {"id": doc_id, "url": signed.get("url"), "expires_in": signed.get("expires_in"), "filename": rec.get("filename")}
 
 
-@router.delete("/{doc_id}", status_code=204)
-def delete_upload(doc_id: str, user: dict = Depends(current_user)) -> None:
+@router.delete("/{doc_id}", status_code=204, response_class=Response)
+def delete_upload(doc_id: str, user: dict = Depends(current_user)) -> Response:
     with db() as conn:
         rec = _get(conn, user["id"], doc_id)
     if rec is None or not _owned(user["id"], doc_id, rec):
@@ -197,6 +197,7 @@ def delete_upload(doc_id: str, user: dict = Depends(current_user)) -> None:
                 raise HTTPException(502, _friendly(exc))
     with db() as conn:
         conn.execute("DELETE FROM docs WHERE col = ? AND id = ? AND owner = ?", (COLLECTION, doc_id, user["id"]))
+    return Response(status_code=204)
 
 
 @router.post("/check")

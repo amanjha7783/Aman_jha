@@ -134,7 +134,7 @@ def put_doc(col: str, doc_id: str, body: dict[str, Any], user: dict = Depends(cu
         return _doc(_get(conn, user, col, doc_id))
 
 
-@router.delete("/c/{col}/{doc_id}", status_code=204)
+@router.delete("/c/{col}/{doc_id}", status_code=204, response_class=Response)
 def delete_doc(col: str, doc_id: str, user: dict = Depends(current_user)) -> Response:
     _check_col(col)
     with db() as conn:

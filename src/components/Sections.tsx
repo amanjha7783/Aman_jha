@@ -42,9 +42,9 @@ export function Skills() {
 }
 
 export function Achievements() {
-  const groups = [["Hackathon", "Hackathons"], ["Industrial visit", "Industrial visits"]] as const;
+  const groups = [["Hackathon", "Hackathons & Competitions"], ["Industrial visit", "Industrial Visits"]] as const;
   return (
-    <Section id="achievements" eyebrow="Hackathons & visits" title="Where I have participated and learned">
+    <Section id="achievements" eyebrow="Hackathons &amp; Industrial Visits" title="Hackathon Participants &amp; Industrial Visits" intro="Competitive hackathons, data-driven policing challenges, and field visits across national railway &amp; maritime infrastructure.">
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-[clamp(2rem,5vw,5rem)]">
         {groups.map(([kind, label]) => (
           <div key={kind}>
@@ -55,9 +55,9 @@ export function Achievements() {
                   <Reveal>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <p className="font-bold">{a.title}</p>
-                      <span className="rounded-md bg-accent/12 px-2 py-0.5 font-mono text-xs text-accent">{a.status}</span>
+                      <span className="rounded-md bg-accent/12 px-2 py-0.5 font-mono text-xs font-semibold text-accent">{a.status}</span>
                     </div>
-                    <p className="mt-1 text-muted">{a.text}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{a.text}</p>
                   </Reveal>
                 </li>
               ))}

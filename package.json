@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173",
-    "dev:server": "cd server && uvicorn main:app --host 127.0.0.1  --reload",
+    "dev:server": "cd server && python -m uvicorn main:app --host 127.0.0.1 --reload",
     "dev:all": "concurrently -k -n web,api -c blue,green \"pnpm dev\" \"pnpm dev:server\"",
     "build": "tsc -b && vite build",
-    "start": "cd server && uvicorn main:app --host 127.0.0.1 ",
+    "start": "cd server && python -m uvicorn main:app --host 127.0.0.1",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ import { Download, Menu, Moon, Sun, X } from "lucide-react";
 import { navItems, profile } from "../data/profile";
 import { btnPrimary } from "./ui";
 
-const ids: Record<string, string> = { Home: "home", About: "about", Experience: "experience", Projects: "projects", Skills: "skills", Achievements: "achievements", Certifications: "certifications", Contact: "contact" };
+const ids: Record<string, string> = { Home: "home", About: "about", Experience: "experience", Projects: "projects", Skills: "skills", Hackathons: "achievements", Certifications: "certifications", Contact: "contact" };
 
 export function useTheme() {
   const [theme, setTheme] = useState<string>(() => document.documentElement.dataset.theme || "dark");
